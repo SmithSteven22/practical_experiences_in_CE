@@ -59,7 +59,7 @@ char getch()
 
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "trajectory_commander");
+    ros::init(argc, argv, "robotont_driver");
     ros::NodeHandle n;
     ros::Publisher velocity_pub;
 

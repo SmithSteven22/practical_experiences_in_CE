@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(Rtech_package)
+project(task_one)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -207,5 +207,5 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-add_executable(assignment_1 src/assignment_1.cpp)
-target_link_libraries(assignment_1 ${catkin_LIBRARIES})
+add_executable(robotont_driver src/robotont_driver.cpp)
+target_link_libraries(robotont_driver ${catkin_LIBRARIES})

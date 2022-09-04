@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>Rtech_package</name>
+  <name>robotont_driver</name>
   <version>0.0.0</version>
-  <description>The Rtech_package package</description>
+  <description>The robotont_driver package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
