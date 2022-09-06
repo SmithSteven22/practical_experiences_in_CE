@@ -1,16 +1,13 @@
-Create a keyboard-controlled robot solution. When the user presses a certain key, the robot starts moving in a certain way. Please program the following behvior:
-- when "O" is pressed, the robot moves on a circular path;
-- when "S" is pressed, the robot moves on an S-shaped path;
-- when "8" is pressed, the robot moves on an 8-shaped path;
-- when either "Z" or "N" is pressed the robot moves on a zigzag path;
-- when "T" is pressed, the robot stops.
+The objective is to assess different camera-based machine vision approaches for guiding a manipulator end-effector (eef) during a pick and place task
 
+Tasks:
+1) Find different ROS software packages that can be integrated with a camera for object recognition
+2)Develop a software pipeline that takes the coordinates of an object (based on machine vision) and guides the eef to pick the object
+  - To develop the pipeline, feel free to use ar_track_alvar for object recognition and MoveIt with xArm7 manipulator. 
+3) Assess the quality, stability, speed, ease-of-integration for different machine-vision solutions. Make sure to highlight any bottlenecks and technical limitations in the final report. 
 
-Solution
+Deliverable results:
+1- Video demonstrations of vision-based eef guidance (at minimum: physical camera, simulated robot)
+2- Code and documentation is available on GitHub
+3- Final written report that describes the outputs of each task
 
-Add "task_one" package to your workspace, source and catkin build.
-Use the following commande to execute the robotont_driver node:
-- roslaunch robotont_driver fake_driver.launch
-
-  *To launch the vertual robot "Robotont" in rviz*
-- rosrun task_one robotont_driver
