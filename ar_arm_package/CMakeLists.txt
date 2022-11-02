@@ -209,3 +209,6 @@ include_directories(
 
 add_executable(ar_arm_node src/ar_arm_node.cpp)
 target_link_libraries(ar_arm_node ${catkin_LIBRARIES})
+
+add_executable(pick_place src/pick_place.cpp)
+target_link_libraries(pick_place ${catkin_LIBRARIES})

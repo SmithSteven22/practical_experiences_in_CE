@@ -1,0 +1,62 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/steven/22s-Tsienza-rtech/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/action_client_gazebo/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/navigation/amcl/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/ar_arm_package/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/ar_track_alvar/ar_track_alvar/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/ar_tracking/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/bags/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/navigation/base_local_planner/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/navigation/carrot_planner/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/navigation/clear_costmap_recovery/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/navigation/costmap_2d/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/drone/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/navigation/dwa_local_planner/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/franka_ros/franka_control/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/franka_ros/franka_example_controllers/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/franka_ros/franka_gazebo/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/franka_ros/franka_gripper/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/franka_ros/franka_hw/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/geometric_shape_paths/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/navigation/global_planner/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/lab10/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/lab5/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/lab7/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/lab8/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/lab9/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/navigation/map_server/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/navigation/move_base/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/navigation/move_slow_and_clear/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/navigation/nav_core/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/navigation/navfn/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/opencv_arm_package/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/APF_package/potential_field/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/robotont_demos/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/robotont_driver/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/navigation/rotate_recovery/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/turtlebot3_simulations/turtlebot3_fake/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/turtlebot3_simulations/turtlebot3_gazebo/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/turtlebot3/turtlebot3_slam/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/universal_robot/ur_kinematics/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/navigation/voxel_grid/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/xarm_ros/xarm_api/include/**",
+        "/home/steven/22s-Tsienza-rtech/src/xarm_ros/xarm_controller/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

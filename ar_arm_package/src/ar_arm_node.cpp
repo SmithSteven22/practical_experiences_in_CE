@@ -13,6 +13,8 @@ using namespace std;
 
 double x, y, z;
 
+
+
 void ar_pose(ar_track_alvar_msgs::AlvarMarkers ar_msg)
 {
     if (ar_msg.markers.size() > 0 and ar_msg.markers.size() <= 1)
@@ -43,16 +45,17 @@ int main(int argc, char **argv)
     ros::Subscriber ar_subscriber = n.subscribe<ar_track_alvar_msgs::AlvarMarkers>("ar_pose_marker", 10, ar_pose);
 
     moveit::planning_interface::MoveGroupInterface move_group_interface_arm("xarm7");
-    moveit::planning_interface::MoveGroupInterface move_group_interface_gripper("xarm_gripper");
 
     // 1. Home position...............................................
     moveit::planning_interface::MoveGroupInterface::Plan home_plan;
-    move_group_interface_arm.setJointValueTarget(move_group_interface_arm.getNamedTargetValues("home"));
-    // bool success = (move_group_interface_arm.plan(home_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
-    // ROS_INFO_NAMED("tutorial", "Visualizing plan 1 (pose goal) %s", success ? "" : "FAILED");
+    move_group_interface_arm.setNamedTarget("home");
+    bool success = (move_group_interface_arm.plan(home_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
+    ROS_INFO_NAMED("tutorial", "Visualizing plan 1 (pose goal) %s", success ? "" : "FAILED");
     move_group_interface_arm.move();
 
-       ros::Rate loop_rate(10);
+    ros::Rate loop_rate(10);
+
+    int a=-2.0;
 
     while (ros::ok())
     {
@@ -65,22 +68,16 @@ int main(int argc, char **argv)
         geometry_msgs::Pose target_pose1;
 
         target_pose1.orientation = current_pose.pose.orientation;
-        target_pose1.position.x = x;
-        target_pose1.position.y = y;
-        target_pose1.position.z = z;
+        target_pose1.position.x = 0.3;
+        target_pose1.position.y = -0.4+a;
+        target_pose1.position.z = 0.4;
         move_group_interface_arm.setPoseTarget(target_pose1);
 
-        // bool success = (move_group_interface_arm.plan(TCP_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
-        // ROS_INFO_NAMED("tutorial", "Visualizing plan 2 (pose goal) %s", success ? "" : "FAILED");
+        bool success = (move_group_interface_arm.plan(TCP_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
+        ROS_INFO_NAMED("tutorial", "Visualizing plan 2 (pose goal) %s", success ? "" : "FAILED");
         move_group_interface_arm.move();
-
-        // 1. Home position...............................................
-        // moveit::planning_interface::MoveGroupInterface::Plan home_plan;
-        // move_group_interface_arm.setJointValueTarget(move_group_interface_arm.getNamedTargetValues("home"));
-        // bool success = (move_group_interface_arm.plan(home_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
-        // ROS_INFO_NAMED("tutorial", "Visualizing plan 1 (pose goal) %s", success ? "" : "FAILED");
-        // move_group_interface_arm.move();
-
+        a+=0.03;
+      
         ros::spinOnce();
         loop_rate.sleep();
     }
