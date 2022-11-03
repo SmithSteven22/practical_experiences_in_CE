@@ -31,3 +31,7 @@ roslaunch usb_cam usb_cam-test.launch
 ```
 http://wiki.ros.org/apriltag_ros
 ```
+# apriltag detection
+```
+roslaunch apriltag_ros continuous_detection.launch
+```
