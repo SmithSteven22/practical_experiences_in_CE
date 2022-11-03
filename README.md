@@ -1,3 +1,6 @@
+<a id="top"></a>
+# Task description
+
 The objective is to assess different camera-based machine vision approaches for guiding a manipulator end-effector (eef) during a pick and place task
 
 Tasks:
