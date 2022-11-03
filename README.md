@@ -23,8 +23,11 @@ https://github.com/xArm-Developer/xarm_ros
 ```
 roslaunch xarm_description xarm7_rviz_display.launch
 ```
-# Tracking AR tags with USB camera
+# USB camera
 ```
-roslaunch xar_arm_package usb_cam_ar_tracking.launch
+roslaunch usb_cam usb_cam-test.launch
 ```
-
+# apriltag_ros
+```
+http://wiki.ros.org/apriltag_ros
+```
