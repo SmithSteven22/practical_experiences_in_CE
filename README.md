@@ -1,3 +1,6 @@
+<a id="top"></a>
+# Task description
+
 Create a keyboard-controlled robot solution. When the user presses a certain key, the robot starts moving in a certain way. Please program the following behvior:
 - when "O" is pressed, the robot moves on a circular path;
 - when "S" is pressed, the robot moves on an S-shaped path;
