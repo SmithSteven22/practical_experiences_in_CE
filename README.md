@@ -19,4 +19,8 @@ Deliverable results:
 ```
 https://github.com/xArm-Developer/xarm_ros
 ```
+# Launch xArm7 in RViz
+```
+roslaunch xarm_description xarm7_rviz_display.launch
+```
 
