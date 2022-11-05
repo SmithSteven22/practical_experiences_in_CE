@@ -35,3 +35,7 @@ http://wiki.ros.org/apriltag_ros
 ```
 roslaunch apriltag_ros continuous_detection.launch
 ```
+# ros_controllers
+```
+http://wiki.ros.org/ros_controllers
+```
