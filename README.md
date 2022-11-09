@@ -19,6 +19,10 @@ Deliverable results:
 ```
 https://github.com/xArm-Developer/xarm_ros
 ```
+# Launch the robot 
+```
+roslaunch xarm7 xarm7_rviz_display.launch
+```
 # USB camera
 ```
 roslaunch usb_cam usb_cam-test.launch
