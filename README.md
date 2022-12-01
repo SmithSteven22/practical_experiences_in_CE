@@ -15,27 +15,21 @@ Deliverable results:
 3) Final written report that describes the outputs of each task
 
 
+
+# Launch the robot 
+```
+roslaunch ar_arm_pakcage usb_cam_ar_tracking.launch
+```
 # xArm
 ```
 https://github.com/xArm-Developer/xarm_ros
 ```
-# Launch the robot 
-```
-roslaunch xarm7 xarm7_rviz_display.launch
-```
 # USB camera
 ```
-roslaunch usb_cam usb_cam-test.launch
+http://wiki.ros.org/usb_cam
 ```
-# apriltag_ros
+# ar_track_alvar
 ```
-http://wiki.ros.org/apriltag_ros
+http://wiki.ros.org/ar_track_alvar
 ```
-# apriltag detection
-```
-roslaunch apriltag_ros continuous_detection.launch
-```
-# ros_controllers
-```
-http://wiki.ros.org/ros_controllers
-```
+
