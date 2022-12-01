@@ -1,7 +1,15 @@
 
 <launch>
+    <include file="$(find xarm7_gripper_moveit_config)/launch/demo.launch" />
     
-    <include file="$(find ar_tracking)/launch/usb_cam.launch" />
+    <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
+        <param name="video_device" value="/dev/video0" />
+        <param name="image_width" value="640" />
+        <param name="image_height" value="480" />
+        <param name="pixel_format" value="yuyv" />
+        <param name="camera_frame_id" value="usb_cam" />
+        <param name="io_method" value="mmap"/>
+    </node>
     
     <include file="$(find ar_track_alvar)/launch/pr2_indiv_no_kinect.launch" >
         <arg name="cam_image_topic" value="/usb_cam/image_raw" />
@@ -9,8 +17,12 @@
         <arg name="output_frame" value="/usb_cam" />
         <arg name="marker_size" default="15.5" />
     </include>
+
     
     <node pkg="tf2_ros" type="static_transform_publisher" name="link_eef_cam_broadcaster" args="0 0 0 0 0 0 link_eef usb_cam" />
+    <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="cam_ar_3_broadcaster" args="0.132 0.872 3.279 0.979 0.103 -0.152 0.084 usb_cam ar_marker_5" /> -->
 
+    <!-- <node name="ar_rviz" pkg="rviz" type="rviz" args="-d $(find ar_arm_package)/config/ar.rviz" /> -->
 </launch>
+
 

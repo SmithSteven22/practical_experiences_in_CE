@@ -13,6 +13,8 @@ find_package(catkin REQUIRED COMPONENTS
   moveit_ros_planning_interface
   roscpp
   rospy
+  message_generation
+  tf2_ros
 )
 
 ## System dependencies are found with CMake's conventions
@@ -49,18 +51,18 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
+add_message_files(
+    FILES
+    target_position.msg
 #   Message2.msg
-# )
+)
 
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
+  #add_service_files(
+  #FILES
+  #target_position.srv
 #   Service2.srv
-# )
+#)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -70,10 +72,13 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   ar_track_alvar_msgs#   geometry_msgs
-# )
+generate_messages(
+  DEPENDENCIES
+  ar_track_alvar_msgs
+  geometry_msgs
+  std_msgs
+  geometry_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -105,9 +110,16 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
+  INCLUDE_DIRS include
 #  LIBRARIES ar_arm_package
-#  CATKIN_DEPENDS ar_track_alvar_msgs geometry_msgs moveit_ros_planning_interface roscpp rospy
+  CATKIN_DEPENDS ar_track_alvar_msgs 
+                geometry_msgs 
+                moveit_ros_planning_interface 
+                roscpp 
+                rospy
+                std_msgs 
+                tf2_ros
+                message_runtime
 #  DEPENDS system_lib
 )
 
@@ -207,8 +219,13 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-add_executable(ar_arm_node src/ar_arm_node.cpp)
-target_link_libraries(ar_arm_node ${catkin_LIBRARIES})
 
-add_executable(pick_place src/pick_place.cpp)
-target_link_libraries(pick_place ${catkin_LIBRARIES})
+add_executable(move_xarm7 src/move_xarm7.cpp)
+target_link_libraries(move_xarm7 ${catkin_LIBRARIES})
+
+
+catkin_install_python(PROGRAMS scripts/artag.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+
