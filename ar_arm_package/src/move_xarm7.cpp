@@ -1,10 +1,51 @@
-// Service
+// https://ros-planning.github.io/moveit_tutorials/doc/move_group_interface/move_group_interface_tutorial.html
 #include <ros/ros.h>
 #include <moveit/move_group_interface/move_group_interface.h>
 #include <moveit/planning_scene_interface/planning_scene_interface.h>
 #include <geometry_msgs/PoseStamped.h>
 #include <geometry_msgs/Pose.h>
 #include "ar_arm_package/target_position.h"
+
+
+using namespace std;
+
+
+
+void Callback(ar_arm_package::target_position rcv){
+// void Callback(const geometry_msgs::PoseStamped &rcv){
+
+    // Planning group
+    moveit::planning_interface::MoveGroupInterface move_group_interface_arm("xarm7");
+
+    // geometry_msgs::PoseStamped rcv;
+    ROS_INFO_STREAM("Received pose: " << rcv);
+
+
+    // if (!rcv.empty()){
+        // geometry_msgs::PoseStamped current_pose;
+        // current_pose = move_group_interface_arm.getCurrentPose("link_eef");
+
+        geometry_msgs::Pose target;
+
+        target.orientation = rcv.target_pose.pose.orientation;
+        target.position.x = rcv.target_pose.pose.position.x;
+        target.position.y = rcv.target_pose.pose.position.y;
+        target.position.z = rcv.target_pose.pose.position.z;
+        // move_group_interface_arm.setPoseTarget(target);
+
+        ROS_INFO_STREAM("Moving........");
+        move_group_interface_arm.move();
+    
+    
+    // } else{
+    //     move_group_interface_arm.setNamedTarget("home");
+
+    //     ROS_INFO_STREAM("Moving to home position...");
+    //     move_group_interface_arm.move();
+
+    // } 
+
+}
 
 
 int main(int argc, char **argv)
@@ -18,67 +59,10 @@ int main(int argc, char **argv)
     ros::AsyncSpinner spinner(1);
     spinner.start();
 
-    ros::Subscriber targetpose_subscriber = n.subscribe("/xarm7/pose", 10, callback);
-    moveit::planning_interface::MoveGroupInterface move_group_interface_arm("xarm7");
-    
+    ros::Subscriber getpose_subscriber = n.subscribe("/xarm7/pose", 10, Callback);
 
-
-
-    // 1. Home position...............................................
-    move_group_interface_arm.setNamedTarget("home");
-
-    ROS_INFO_NAMED("tutorial", "Visualizing plan 1");
-    move_group_interface_arm.move();
-
-
-    // 2. Place the TCP (Tool Center Point, the tip of the robot) above the object
-    geometry_msgs::PoseStamped current_pose;
-    current_pose = move_group_interface_arm.getCurrentPose("link_eef");
-
-    geometry_msgs::Pose target_pose1;
-
-    target_pose1.orientation = current_pose.pose.orientation;
-    target_pose1.position.x = 0.3;
-    target_pose1.position.y = -0.4;
-    target_pose1.position.z = 0.4;
-    move_group_interface_arm.setPoseTarget(target_pose1);
-
-    ROS_INFO_NAMED("tutorial", "Visualizing plan 2");
-    move_group_interface_arm.move();
-
-
-    // 4. TCP close to the object.......................................
-    target_pose1.position.z = target_pose1.position.z - 0.4;
-    move_group_interface_arm.setPoseTarget(target_pose1);
-    move_group_interface_arm.move();
-
-    ROS_INFO_NAMED("tutorial", "Visualizing plan 4");
-    move_group_interface_arm.move();
-
-
-
-    // 6. Move the TCP above the object............................................. 
-    target_pose1.position.z += 0.2;
-    target_pose1.position.x += 0.1 ;
-    target_pose1.position.y += 0.6 ;
-    move_group_interface_arm.setPoseTarget(target_pose1);
-    move_group_interface_arm.move();
-
-    ROS_INFO_NAMED("tutorial", "Visualizing plan 6");
-    move_group_interface_arm.move();
-
-
-
-    // 7. Lower TCP above the object..................................
-    target_pose1.position.z = target_pose1.position.z - 0.14;
-    move_group_interface_arm.setPoseTarget(target_pose1);
-    move_group_interface_arm.move();
-
-    ROS_INFO_NAMED("tutorial", "Visualizing plan 7");
-    move_group_interface_arm.move();
-
-
-    ros::shutdown();
+    ros::waitForShutdown();
+    // ros::shutdown();
     return 0;
 
 }
