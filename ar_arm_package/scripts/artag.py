@@ -18,7 +18,7 @@ def callback(data, listener):
 
         # This function returns two lists. The first is the (x, y, z) linear transformation of the child frame relative to the parent, and the
         # second is the (x, y, z, w) quaternion required to rotate from the parent orientation to the child orientation.
-        trans, rot = listener.lookupTransform('/world', '/ar_marker_5', rospy.Time())
+        trans, rot = listener.lookupTransform('/link_eef', '/ar_marker_5', rospy.Time(0))
 
         msg_target.target_pose.pose.position.x = trans[0]
         msg_target.target_pose.pose.position.y = trans[1]
@@ -43,7 +43,7 @@ if __name__ == '__main__':
 
         listener = tf.TransformListener()
 
-        ar_subscriber = rospy.Subscriber('/ar_pose_marker', AlvarMarkers, callback, listener)
+        ar_subscriber = rospy.Subscriber('/ar_pose_marker', AlvarMarkers, callback, listener, queue_size= 5)
         ar_target_publisher = rospy.Publisher('/xarm7/pose', target_position, queue_size=1)
 
         rate = rospy.Rate(60.0)
