@@ -15,10 +15,16 @@
 #include <geometry_msgs/Pose.h>
 #include "ar_arm_package/target_position.h"
 
+
+
+
 geometry_msgs::Pose target;
 // The mutex class is a synchronization primitive that can be used to protect shared data from being simultaneously accessed by multiple threads.
 std::mutex mtx;
 using namespace std;
+
+
+
 
 void Callback(ar_arm_package::target_position rcv)
 {
@@ -27,18 +33,19 @@ void Callback(ar_arm_package::target_position rcv)
     mtx.lock();
     // std::cout << "mutex locked in callback!" << std::endl;
 
-    // target.orientation.w = 1;
-    target.orientation.w = rcv.target_pose.pose.orientation.w;
-    // target.orientation.x = rcv.target_pose.pose.orientation.x;
-    // target.orientation.y = rcv.target_pose.pose.orientation.y;
-    // target.orientation.z = rcv.target_pose.pose.orientation.z;
     target.position.x = rcv.target_pose.pose.position.x;
     target.position.y = rcv.target_pose.pose.position.y;
     target.position.z = rcv.target_pose.pose.position.z;
+    target.orientation.x = rcv.target_pose.pose.orientation.x;
+    target.orientation.y = rcv.target_pose.pose.orientation.y;
+    target.orientation.z = rcv.target_pose.pose.orientation.z;
+    target.orientation.w = rcv.target_pose.pose.orientation.w;
     mtx.unlock();
 
     // std::cout << "mutex unlocked in callback!" << std::endl;
 }
+
+
 
 int main(int argc, char **argv)
 {
@@ -68,6 +75,8 @@ int main(int argc, char **argv)
     ROS_INFO_NAMED("tutorial", "End effector link: %s", move_group_interface.getEndEffectorLink().c_str());
     bool success = false;
 
+
+    // Initial pose
     target.orientation.w = 1;
     target.orientation.x = 0;
     target.orientation.y = 0;
@@ -84,12 +93,13 @@ int main(int argc, char **argv)
         move_group_interface.setPoseTarget(target);
         // success = (move_group_interface.plan(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
         // ROS_INFO_STREAM("Moving........");
-        move_group_interface.asyncMove();
+        move_group_interface.asyncMove();   // Plan and execute a trajectory that takes the group of joints declared in the constructor to the specified target. This call is not blocking (does not wait for the execution of the trajectory to complete).
+
         mtx.unlock();
         ros::Duration(3).sleep();
         // std::cout << "mutex unlocked!" << std::endl;
     }
-
+    
     ros::waitForShutdown();
     // ros::shutdown();
     return 0;
