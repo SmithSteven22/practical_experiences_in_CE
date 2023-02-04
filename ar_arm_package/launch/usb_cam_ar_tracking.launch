@@ -19,9 +19,9 @@
         <arg name="marker_size" default="15.5" />
     </include>
 
-    <node pkg="tf2_ros" type="static_transform_publisher" name="link_eef_cam_broadcaster" args="0 0.5 0.6 0 0 -1.57 world usb_cam" />
-    <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="link_eef_cam_broadcaster" args="0 0 0 0 0 0 link_eef usb_cam" /> -->
-    <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="cam_ar_3_broadcaster" args="0.132 0.872 3.279 0.979 0.103 -0.152 0.084 usb_cam ar_marker_5" /> -->
+    
+    <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="link_eef_cam_broadcaster" args="0 0.5 0.6 0 0 -1.57 world usb_cam" /> -->
+    <node pkg="tf" type="static_transform_publisher" name="world_to_usb_cam" args="0.4 0 0.7 -1.571 0 -1.571 /world /usb_cam 100" />
 
     <!-- <node name="ar_rviz" pkg="rviz" type="rviz" args="-d $(find ar_arm_package)/config/ar.rviz" /> -->
 </launch>

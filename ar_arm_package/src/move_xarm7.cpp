@@ -16,14 +16,10 @@
 #include "ar_arm_package/target_position.h"
 
 
-
-
 geometry_msgs::Pose target;
 // The mutex class is a synchronization primitive that can be used to protect shared data from being simultaneously accessed by multiple threads.
 std::mutex mtx;
 using namespace std;
-
-
 
 
 void Callback(ar_arm_package::target_position rcv)
@@ -36,15 +32,15 @@ void Callback(ar_arm_package::target_position rcv)
     target.position.x = rcv.target_pose.pose.position.x;
     target.position.y = rcv.target_pose.pose.position.y;
     target.position.z = rcv.target_pose.pose.position.z;
-    target.orientation.x = rcv.target_pose.pose.orientation.x;
-    target.orientation.y = rcv.target_pose.pose.orientation.y;
-    target.orientation.z = rcv.target_pose.pose.orientation.z;
-    target.orientation.w = rcv.target_pose.pose.orientation.w;
+    // target.orientation.x = rcv.target_pose.pose.orientation.x;
+    // target.orientation.y = rcv.target_pose.pose.orientation.y;
+    // target.orientation.z = rcv.target_pose.pose.orientation.z;
+    // target.orientation.w = rcv.target_pose.pose.orientation.w;
+    target.orientation.w = 1;
     mtx.unlock();
 
     // std::cout << "mutex unlocked in callback!" << std::endl;
 }
-
 
 
 int main(int argc, char **argv)

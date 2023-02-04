@@ -11,7 +11,6 @@ from ar_arm_package.msg import target_position
 
 msg_target = target_position()
 
-
 def callback(data, listener):
 
     try:
@@ -19,7 +18,7 @@ def callback(data, listener):
         # This function returns two lists. The first is the (x, y, z) linear transformation of the child frame relative to the parent, and the
         # second is the (x, y, z, w) quaternion required to rotate from the parent orientation to the child orientation.
         # ar_marker_5
-        trans, rot = listener.lookupTransform('/usb_cam', '/ar_marker_5', rospy.Time())
+        trans, rot = listener.lookupTransform('/world', '/ar_marker_5', rospy.Time())
 
         msg_target.target_pose.pose.position.x = trans[0]
         msg_target.target_pose.pose.position.y = trans[1]
@@ -28,10 +27,10 @@ def callback(data, listener):
         msg_target.target_pose.pose.orientation.y = rot[1]
         msg_target.target_pose.pose.orientation.z = rot[2]
         msg_target.target_pose.pose.orientation.w = rot[3]
-        msg_target.target_pose.header.frame_id = "usb_cam"
+        msg_target.target_pose.header.frame_id = "world"
         msg_target.target_pose.header.stamp = rospy.Time.now()
 
-        print("trans=", trans, "rot", rot)
+        rospy.loginfo("Target pose {}".format(msg_target))
 
     except (tf.LookupException, tf.ConnectivityException,   tf.ExtrapolationException):
         pass
@@ -52,7 +51,6 @@ if __name__ == '__main__':
         while not rospy.is_shutdown():
 
             ar_target_publisher.publish(msg_target)
-            # tag_status.publish(single_tag_on_screen)
 
             rate.sleep()
 

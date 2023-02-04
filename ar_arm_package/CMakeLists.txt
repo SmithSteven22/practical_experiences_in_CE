@@ -11,6 +11,9 @@ find_package(catkin REQUIRED COMPONENTS
   ar_track_alvar_msgs
   geometry_msgs
   moveit_ros_planning_interface
+  moveit_visual_tools
+  moveit_core 
+  moveit_ros_planning 
   roscpp
   rospy
   message_generation
@@ -222,6 +225,9 @@ include_directories(
 
 add_executable(move_xarm7 src/move_xarm7.cpp)
 target_link_libraries(move_xarm7 ${catkin_LIBRARIES})
+
+add_executable(armove src/armove.cpp)
+target_link_libraries(armove ${catkin_LIBRARIES})
 
 
 catkin_install_python(PROGRAMS scripts/artag.py
