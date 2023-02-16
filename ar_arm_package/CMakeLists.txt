@@ -226,9 +226,6 @@ include_directories(
 add_executable(move_xarm7 src/move_xarm7.cpp)
 target_link_libraries(move_xarm7 ${catkin_LIBRARIES})
 
-add_executable(armove src/armove.cpp)
-target_link_libraries(armove ${catkin_LIBRARIES})
-
 
 catkin_install_python(PROGRAMS scripts/artag.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
