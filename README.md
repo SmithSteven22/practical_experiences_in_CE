@@ -16,20 +16,15 @@ Deliverable results:
 
 
 
-# Launch the robot 
+# Dependencies 
+- [xArm](https://github.com/xArm-Developer/xarm_ros)
+- [Usb camera](http://wiki.ros.org/usb_cam)
+- [ar_track_alvar](http://wiki.ros.org/ar_track_alvar)
+
+# Artag tracking
 ```
-roslaunch ar_arm_pakcage usb_cam_ar_tracking.launch
+roslaunch ar_arm_package usb_cam_ar_tracking.launch
+rosrun ar_arm_package ar_tracking.py
 ```
-# xArm
-```
-https://github.com/xArm-Developer/xarm_ros
-```
-# USB camera
-```
-http://wiki.ros.org/usb_cam
-```
-# ar_track_alvar
-```
-http://wiki.ros.org/ar_track_alvar
-```
+
 
