@@ -54,9 +54,9 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-add_message_files(
-    FILES
-    target_position.msg
+#add_message_files(
+    #FILES
+    #target_position.msg
 #   Message2.msg
 )
 
@@ -221,11 +221,6 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
-
-
-add_executable(move_xarm7 src/move_xarm7.cpp)
-target_link_libraries(move_xarm7 ${catkin_LIBRARIES})
-
 
 catkin_install_python(PROGRAMS scripts/artag.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
