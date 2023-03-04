@@ -18,7 +18,7 @@ Deliverable results:
 
 # Dependencies 
 - [xArm](https://github.com/xArm-Developer/xarm_ros)
-- [Usb camera](http://wiki.ros.org/usb_cam)
+- [usb_cam](http://wiki.ros.org/usb_cam)
 - [ar_track_alvar](http://wiki.ros.org/ar_track_alvar)
 - [find_object_2d](http://wiki.ros.org/find_object_2d)
 
