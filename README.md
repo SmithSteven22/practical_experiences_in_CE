@@ -20,6 +20,7 @@ Deliverable results:
 - [xArm](https://github.com/xArm-Developer/xarm_ros)
 - [usb_cam](http://wiki.ros.org/usb_cam)
 - [ar_track_alvar](http://wiki.ros.org/ar_track_alvar)
+- [vision_opencv](http://wiki.ros.org/vision_opencv)
 - [find_object_2d](http://wiki.ros.org/find_object_2d)
 
 # Artag tracking
@@ -28,6 +29,16 @@ roslaunch ar_arm_package usb_cam_ar_tracking.launch
 rosrun ar_arm_package ar_tracking.py
 ```
 ![Artag tracking](https://github.com/SmithSteven22/practical_experiences_in_CE/blob/ims_project/ar_control.gif)
+
+# Vision_opencv
+```
+/include/blob_filter.py
+```
+For colour filtering
+```
+rosrun ar_arm_package opencv_detector.py
+rosrun ar_arm_package opencv_trakcing.py
+```
 
 
 # find_object_2d
