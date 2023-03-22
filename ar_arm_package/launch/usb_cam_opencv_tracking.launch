@@ -20,8 +20,4 @@
     </include>
     
     <node pkg="tf2_ros" type="static_transform_publisher" name="link_eef_cam_broadcaster" args="0.4 0 0.7 -1.57 0 -1.57 link_base usb_cam" />
-    <node pkg="tf2_ros" type="static_transform_publisher" name="transformer_broadcaster1" args="0 0 0.1 1 0 0 0 ar_marker_0 artag" />
-
 </launch>
-
-

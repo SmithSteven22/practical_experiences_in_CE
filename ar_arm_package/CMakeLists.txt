@@ -18,6 +18,10 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   message_generation
   tf2_ros
+  cv_bridge
+  image_transport
+  sensor_msgs
+  std_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -54,9 +58,9 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-#add_message_files(
-    #FILES
-    #target_position.msg
+add_message_files(
+    FILES
+    target_position.msg
 #   Message2.msg
 )
 
@@ -222,8 +226,5 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-catkin_install_python(PROGRAMS scripts/artag.py
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
 
 
