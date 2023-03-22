@@ -39,6 +39,7 @@ For colour filtering
 rosrun ar_arm_package opencv_detector.py
 rosrun ar_arm_package opencv_trakcing.py
 ```
+![opencv_control](https://github.com/SmithSteven22/practical_experiences_in_CE/blob/ims_project/opencv_control.gif)
 
 
 # find_object_2d
