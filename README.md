@@ -28,7 +28,6 @@ Deliverable results:
 roslaunch ar_arm_package usb_cam_ar_tracking.launch
 rosrun ar_arm_package ar_tracking.py
 ```
-![Artag tracking](https://github.com/SmithSteven22/practical_experiences_in_CE/blob/ims_project/ar_control.gif)
 
 # Vision_opencv
 ```
