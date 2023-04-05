@@ -16,6 +16,20 @@ Deliverable results:
 
 
 
+# My plan
+- [x] **Read and understand the problem**
+- [x] **Get familiar with xarm7 and moveit**
+- Moveit capabilities
+-	Launch xarm7 in moveit
+- [x] **Perception**
+-	understand and use usb_cam (camera) in moveit environment
+-	Investigate tf and add the camera to the robot’s environment (base_link)
+- [x] **Approach**\
+Use tf to keep track of different coordinates and object of interest. 
+- [x] **ar_track_alvar**
+- [x] **vision_opencv**
+- [x] **find_object_2d**
+
 # Dependencies 
 - [xArm](https://github.com/xArm-Developer/xarm_ros)
 - [usb_cam](http://wiki.ros.org/usb_cam)
