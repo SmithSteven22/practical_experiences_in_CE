@@ -16,6 +16,20 @@ Deliverable results:
 
 
 
+# My plan
+- [x] **Read and understand the problem**
+- [x] **Get familiar with xarm7 and moveit**
+- Moveit capabilities
+-	Launch xarm7 in moveit
+- [x] **Perception**
+-	understand and use usb_cam (camera) in moveit environment
+-	Investigate tf and add the camera to the robot’s environment (base_link)
+- [x] **Approach**\
+Use tf to keep track of different coordinates and object of interest. 
+- [x] **ar_track_alvar**
+- [x] **vision_opencv**
+- [x] **find_object_2d**
+
 # Dependencies 
 - [xArm](https://github.com/xArm-Developer/xarm_ros)
 - [usb_cam](http://wiki.ros.org/usb_cam)
@@ -37,10 +51,15 @@ rosrun ar_arm_package ar_tracking.py
 For colour filtering
 ```
 rosrun ar_arm_package opencv_detector.py
-rosrun ar_arm_package opencv_trakcing.py
+rosrun ar_arm_package opencv_tracking.py
 ```
 ![opencv_control](https://github.com/SmithSteven22/practical_experiences_in_CE/blob/ims_project/opencv_control.gif)
 
 
 # find_object_2d
+```
+roslaunch ar_arm_package find_object.launch
+roslaunch ar_arm_package track_find_object.launch
+```
+![find_object](https://github.com/SmithSteven22/practical_experiences_in_CE/blob/ims_project/find_obj.png)
 
