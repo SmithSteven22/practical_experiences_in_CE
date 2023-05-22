@@ -37,10 +37,13 @@ Use tf to keep track of different coordinates and object of interest.
 - [vision_opencv](http://wiki.ros.org/vision_opencv)
 - [find_object_2d](http://wiki.ros.org/find_object_2d)
 
+# Controller
+```
+roslaunch ar_arm_package xarm7_manipulator.launch
+```
 # Artag tracking
 ```
-roslaunch ar_arm_package usb_cam_ar_tracking.launch
-rosrun ar_arm_package ar_tracking.py
+rosrun ar_arm_package ar_detector.py
 ```
 ![ar_tracking](https://github.com/SmithSteven22/practical_experiences_in_CE/blob/ims_project/ar_control.gif)
 
@@ -51,7 +54,6 @@ rosrun ar_arm_package ar_tracking.py
 For colour filtering
 ```
 rosrun ar_arm_package opencv_detector.py
-rosrun ar_arm_package opencv_tracking.py
 ```
 ![opencv_control](https://github.com/SmithSteven22/practical_experiences_in_CE/blob/ims_project/opencv_control.gif)
 
