@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <launch>
     <include file="$(find xarm7_gripper_moveit_config)/launch/demo.launch" />
@@ -11,13 +11,25 @@
         <param name="camera_frame_id" value="usb_cam" />
         <param name="io_method" value="mmap"/>
     </node>
-    
+
     <include file="$(find ar_track_alvar)/launch/pr2_indiv_no_kinect.launch" >
         <arg name="cam_image_topic" value="/usb_cam/image_raw" />
         <arg name="cam_info_topic" value="/usb_cam/camera_info" />
         <arg name="output_frame" value="/usb_cam" />
         <arg name="marker_size" default="4.5" />
     </include>
-    
+
+    <!-- <node name="find_object_2d_node" pkg="find_object_2d" type="find_object_2d" output="screen">
+        <remap from="image" to="/usb_cam/image_raw"/>
+        <param name="gui" value="true" type="bool" />
+        <param name="session_path" value="$(find ar_arm_package)/detected_object.bin"/>
+        <param name="settings_paths" value="~/.ros/find_object_2d.ini" type="str" />
+    </node> -->
+
+    <!-- Add camera into the world -->
     <node pkg="tf2_ros" type="static_transform_publisher" name="link_eef_cam_broadcaster" args="0.4 0 0.7 -1.57 0 -1.57 link_base usb_cam" />
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="transformer_broadcaster1" args="0 0 0.1 1 0 0 0 ar_marker_0 artag" />
+
+    <node pkg="ar_arm_package" name="motion" type="motion.py" output="screen"/>
 </launch>

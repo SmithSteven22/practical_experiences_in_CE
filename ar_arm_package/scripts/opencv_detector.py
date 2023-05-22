@@ -7,6 +7,8 @@ import sys
 import cv2
 import time
 import rospy
+import moveit_commander
+from moveit_commander import *
 from std_msgs.msg import String
 from sensor_msgs.msg import Image
 import geometry_msgs.msg
@@ -15,11 +17,17 @@ from cv_bridge import CvBridge, CvBridgeError
 import numpy as np
 import tf2_ros
 
-class image_converter:
+class Image_converter:
     
-    def __init__(self):    
+    def __init__(self):
+        self.tf_buffer = tf2_ros.Buffer()
+        tf2_ros.TransformListener(self.tf_buffer)
+    
         self.bridge = CvBridge()
         self.image_sub = rospy.Subscriber("/usb_cam/image_raw",Image,self.callback)
+        self.pub_ = rospy.Publisher('/motion', geometry_msgs.msg.Pose, queue_size=5)
+
+        self.rate = rospy.Rate(10)
         
     def callback(self, data):
         try:
@@ -46,8 +54,8 @@ class image_converter:
             img_hsv = cv2.cvtColor(cv_image, cv2.COLOR_BGR2HSV)
 
             # Color detection limits
-            hsvMin = np.array([31,48,38])
-            hsvMax = np.array([88,255,205])
+            hsvMin = np.array([45, 112, 65])
+            hsvMax = np.array([103, 255, 245])
 
             # Apply HSV thresholds
             img_mask = cv2.inRange(img_hsv, hsvMin, hsvMax)
@@ -92,17 +100,50 @@ class image_converter:
                     blob_pose.transform.rotation.w = 1.0
 
                     br.sendTransform(blob_pose)
+
+                    trans = geometry_msgs.msg.TransformStamped()
+
+                    # Check if the frame ID exists
+                    # if self.tf_buffer.can_transform("link_base", "object", rospy.Time()):
+                    while True:    
+                        try:
+                            trans = self.tf_buffer.lookup_transform("link_base", "object", rospy.Time())
+                            break
+
+                        except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException):
+                            print("Hello")
+                            continue
+
+                    target_pose = geometry_msgs.msg.Pose()
+
+                    target_pose.position.x = trans.transform.translation.x
+                    target_pose.position.y = trans.transform.translation.y
+                    target_pose.position.z = trans.transform.translation.z
+                    target_pose.orientation.x = trans.transform.rotation.x
+                    target_pose.orientation.y = trans.transform.rotation.y
+                    target_pose.orientation.z = trans.transform.rotation.z
+                    target_pose.orientation.w = trans.transform.rotation.w
+
+                    print(target_pose)
+
+                    self.pub_.publish(target_pose)
+                            
+
+                    # else:
+                    #     rospy.loginfo("######## No tag detected #########")
+        
+        self.rate.sleep()
                     
         cv2.imshow("Image mask", img_mask)
         cv2.waitKey(3)
 
 
 def main(args):
-    print("############## Start initialization #########")
-
-    ic = image_converter()
-    rospy.init_node("opencv_detector", anonymous=True)
     try:
+        print("############## Start initialization #########")
+        rospy.init_node("opencv_detector", anonymous=True)
+        Image_converter()
+   
         rospy.spin()
     except KeyboardInterrupt:
         print("Shutting down !!!")
