@@ -30,6 +30,8 @@ Use tf to keep track of different coordinates and object of interest.
 - [x] **vision_opencv**
 - [x] **find_object_2d**
 
+![pipeline](https://github.com/SmithSteven22/practical_experiences_in_CE/blob/ims_project/pipeline.png)
+
 # Dependencies 
 - [xArm](https://github.com/xArm-Developer/xarm_ros)
 - [usb_cam](http://wiki.ros.org/usb_cam)
