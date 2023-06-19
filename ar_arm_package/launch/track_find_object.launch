@@ -14,7 +14,7 @@
     <node name="find_object_2d_node" pkg="find_object_2d" type="find_object_2d" output="screen">
         <remap from="image" to="/usb_cam/image_raw"/>
         <param name="gui" value="true" type="bool" />
-        <param name="session_path" value="$(find ar_arm_package)/detected_object.bin"/>
+        <param name="session_path" value="$(find ar_arm_package)/object.bin"/>
         <param name="settings_paths" value="~/.ros/find_object_2d.ini" type="str" />
         
     </node>

@@ -19,12 +19,12 @@
         <arg name="marker_size" default="4.5" />
     </include>
 
-    <!-- <node name="find_object_2d_node" pkg="find_object_2d" type="find_object_2d" output="screen">
+    <node name="find_object_2d_node" pkg="find_object_2d" type="find_object_2d" output="screen">
         <remap from="image" to="/usb_cam/image_raw"/>
         <param name="gui" value="true" type="bool" />
-        <param name="session_path" value="$(find ar_arm_package)/detected_object.bin"/>
+        <param name="session_path" value="$(find ar_arm_package)/object.bin"/>
         <param name="settings_paths" value="~/.ros/find_object_2d.ini" type="str" />
-    </node> -->
+    </node>
 
     <!-- Add camera into the world -->
     <node pkg="tf2_ros" type="static_transform_publisher" name="link_eef_cam_broadcaster" args="0.4 0 0.7 -1.57 0 -1.57 link_base usb_cam" />
