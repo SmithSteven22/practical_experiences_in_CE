@@ -1,0 +1,2 @@
+#Exclude all vscode generated files
+*.vscode/
