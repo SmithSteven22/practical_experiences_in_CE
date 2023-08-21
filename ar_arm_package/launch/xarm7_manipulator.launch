@@ -31,5 +31,5 @@
 
     <node pkg="tf2_ros" type="static_transform_publisher" name="transformer_broadcaster1" args="0 0 0.1 1 0 0 0 ar_marker_0 artag" />
 
-    <node pkg="ar_arm_package" name="motion" type="motion.py" output="screen"/>
+    <node pkg="ar_arm_package" name="move_arm" type="move_arm" output="screen"/>
 </launch>
